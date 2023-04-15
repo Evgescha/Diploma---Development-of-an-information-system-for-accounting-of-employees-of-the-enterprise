@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit SickLeave</title>
+</head>
+<body>
+<h1>Edit SickLeave</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/sickLeave}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="startDate">startDate:</label>
+            <input type="text" th:field="*{startDate}" id="startDate" required>
+        </p>
+    <p>
+        <label for="endDate">endDate:</label>
+            <input type="text" th:field="*{endDate}" id="endDate" required>
+        </p>
+    <p>
+        <label for="duration">duration:</label>
+            <input type="text" th:field="*{duration}" id="duration" required>
+        </p>
+    <p>
+        <label for="employee">employee:</label>
+            <input type="text" th:field="*{employee}" id="employee" required>
+        </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/sickLeave}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

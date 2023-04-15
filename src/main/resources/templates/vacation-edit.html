@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vacation</title>
+</head>
+<body>
+<h1>Edit Vacation</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/vacation}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="type">type:</label>
+            <input type="text" th:field="*{type}" id="type" required>
+        </p>
+    <p>
+        <label for="startDate">startDate:</label>
+            <input type="text" th:field="*{startDate}" id="startDate" required>
+        </p>
+    <p>
+        <label for="endDate">endDate:</label>
+            <input type="text" th:field="*{endDate}" id="endDate" required>
+        </p>
+    <p>
+        <label for="duration">duration:</label>
+            <input type="text" th:field="*{duration}" id="duration" required>
+        </p>
+    <p>
+        <label for="status">status:</label>
+            <input type="text" th:field="*{status}" id="status" required>
+        </p>
+    <p>
+        <label for="employee">employee:</label>
+            <input type="text" th:field="*{employee}" id="employee" required>
+        </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/vacation}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

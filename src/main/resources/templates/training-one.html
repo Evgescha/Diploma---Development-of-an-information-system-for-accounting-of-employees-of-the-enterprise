@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Training</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Training Details</h1>
+<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
+<table>
+        <tr>
+        <th>title:</th>
+                <td th:text="${entity.title}"></td>
+            </tr>
+        <tr>
+        <th>description:</th>
+                <td th:text="${entity.description}"></td>
+            </tr>
+        <tr>
+        <th>startDate:</th>
+                <td th:text="${entity.startDate}"></td>
+            </tr>
+        <tr>
+        <th>endDate:</th>
+                <td th:text="${entity.endDate}"></td>
+            </tr>
+        <tr>
+        <th>result:</th>
+                <td th:text="${entity.result}"></td>
+            </tr>
+        <tr>
+        <th>employee:</th>
+                <td th:text="${entity.employee}"></td>
+            </tr>
+    
+
+</table>
+<br>
+<a th:href="@{/training}">Back to the List</a>
+<a th:href="@{/training/edit/{id}(id=${entity.id})}">Edit</a>
+<form th:if="${entity.id!=null}" method="get"
+         th:action="'/training/'
+               + ${entity.id} + '/delete'">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>

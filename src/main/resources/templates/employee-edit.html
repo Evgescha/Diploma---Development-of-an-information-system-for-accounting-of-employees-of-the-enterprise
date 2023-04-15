@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+</head>
+<body>
+<h1>Edit Employee</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/employee}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="firstName">firstName:</label>
+            <input type="text" th:field="*{firstName}" id="firstName" required>
+        </p>
+    <p>
+        <label for="lastName">lastName:</label>
+            <input type="text" th:field="*{lastName}" id="lastName" required>
+        </p>
+    <p>
+        <label for="middleName">middleName:</label>
+            <input type="text" th:field="*{middleName}" id="middleName" required>
+        </p>
+    <p>
+        <label for="birthDate">birthDate:</label>
+            <input type="text" th:field="*{birthDate}" id="birthDate" required>
+        </p>
+    <p>
+        <label for="phoneNumber">phoneNumber:</label>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" required>
+        </p>
+    <p>
+        <label for="email">email:</label>
+            <input type="text" th:field="*{email}" id="email" required>
+        </p>
+    <p>
+        <label for="position">position:</label>
+            <input type="text" th:field="*{position}" id="position" required>
+        </p>
+    <p>
+        <label for="department">department:</label>
+            <input type="text" th:field="*{department}" id="department" required>
+        </p>
+    <p>
+        <label for="vacations">vacations:</label>
+            <select multiple="multiple" th:field="*{vacations}" id="vacations">
+            <option th:each="vacations_item : ${vacations_list}" th:value="${vacations_item}" th:text="${vacations_item}"></option>
+        </select>
+        </p>
+    <p>
+        <label for="sickLeaves">sickLeaves:</label>
+            <select multiple="multiple" th:field="*{sickLeaves}" id="sickLeaves">
+            <option th:each="sickLeaves_item : ${sickLeaves_list}" th:value="${sickLeaves_item}" th:text="${sickLeaves_item}"></option>
+        </select>
+        </p>
+    <p>
+        <label for="trainings">trainings:</label>
+            <select multiple="multiple" th:field="*{trainings}" id="trainings">
+            <option th:each="trainings_item : ${trainings_list}" th:value="${trainings_item}" th:text="${trainings_item}"></option>
+        </select>
+        </p>
+    <p>
+        <label for="user">user:</label>
+            <input type="text" th:field="*{user}" id="user" required>
+        </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/employee}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

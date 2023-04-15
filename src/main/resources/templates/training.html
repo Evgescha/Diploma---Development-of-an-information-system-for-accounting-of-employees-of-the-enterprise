@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Training</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>List of Training</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<a th:href="@{/training/edit}">Create new Training</a>
+<table>
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>description</th>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>result</th>
+        <th>employee</th>
+
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="entity : ${list}">
+                                    <td th:text=${entity.title}></td>
+                                            <td th:text=${entity.description}></td>
+                                            <td th:text=${entity.startDate}></td>
+                                            <td th:text=${entity.endDate}></td>
+                                            <td th:text=${entity.result}></td>
+                                            <td th:text=${entity.employee}></td>
+                
+        <td>
+            <a th:href="@{/training/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/training/edit/{id}(id=${entity.id})}">Edit</a>
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/training/'
+                  +${entity.id}+'/delete'">
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of SickLeave</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>List of SickLeave</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<a th:href="@{/sickLeave/edit}">Create new SickLeave</a>
+<table>
+    <thead>
+    <tr>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>duration</th>
+        <th>employee</th>
+
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="entity : ${list}">
+                                    <td th:text=${entity.startDate}></td>
+                                            <td th:text=${entity.endDate}></td>
+                                            <td th:text=${entity.duration}></td>
+                                            <td th:text=${entity.employee}></td>
+                
+        <td>
+            <a th:href="@{/sickLeave/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/sickLeave/edit/{id}(id=${entity.id})}">Edit</a>
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/sickLeave/'
+                  +${entity.id}+'/delete'">
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

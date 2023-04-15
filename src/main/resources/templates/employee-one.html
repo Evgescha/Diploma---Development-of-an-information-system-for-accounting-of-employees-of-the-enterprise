@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Employee</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Employee Details</h1>
+<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
+<table>
+        <tr>
+        <th>firstName:</th>
+                <td th:text="${entity.firstName}"></td>
+            </tr>
+        <tr>
+        <th>lastName:</th>
+                <td th:text="${entity.lastName}"></td>
+            </tr>
+        <tr>
+        <th>middleName:</th>
+                <td th:text="${entity.middleName}"></td>
+            </tr>
+        <tr>
+        <th>birthDate:</th>
+                <td th:text="${entity.birthDate}"></td>
+            </tr>
+        <tr>
+        <th>phoneNumber:</th>
+                <td th:text="${entity.phoneNumber}"></td>
+            </tr>
+        <tr>
+        <th>email:</th>
+                <td th:text="${entity.email}"></td>
+            </tr>
+        <tr>
+        <th>position:</th>
+                <td th:text="${entity.position}"></td>
+            </tr>
+        <tr>
+        <th>department:</th>
+                <td th:text="${entity.department}"></td>
+            </tr>
+        <tr>
+        <th>vacations:</th>
+                <td>
+            <ul>
+                <li th:each="vacations_item : ${entity.vacations}" th:text="${vacations_item}"></li>
+            </ul>
+        </td>
+            </tr>
+        <tr>
+        <th>sickLeaves:</th>
+                <td>
+            <ul>
+                <li th:each="sickLeaves_item : ${entity.sickLeaves}" th:text="${sickLeaves_item}"></li>
+            </ul>
+        </td>
+            </tr>
+        <tr>
+        <th>trainings:</th>
+                <td>
+            <ul>
+                <li th:each="trainings_item : ${entity.trainings}" th:text="${trainings_item}"></li>
+            </ul>
+        </td>
+            </tr>
+        <tr>
+        <th>user:</th>
+                <td th:text="${entity.user}"></td>
+            </tr>
+    
+
+</table>
+<br>
+<a th:href="@{/employee}">Back to the List</a>
+<a th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
+<form th:if="${entity.id!=null}" method="get"
+         th:action="'/employee/'
+               + ${entity.id} + '/delete'">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>

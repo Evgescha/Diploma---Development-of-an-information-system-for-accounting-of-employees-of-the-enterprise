@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Position</title>
+</head>
+<body>
+<h1>Edit Position</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/position}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="title">title:</label>
+            <input type="text" th:field="*{title}" id="title" required>
+        </p>
+    <p>
+        <label for="description">description:</label>
+            <input type="text" th:field="*{description}" id="description" required>
+        </p>
+    <p>
+        <label for="employees">employees:</label>
+            <select multiple="multiple" th:field="*{employees}" id="employees">
+            <option th:each="employees_item : ${employees_list}" th:value="${employees_item}" th:text="${employees_item}"></option>
+        </select>
+        </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/position}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>
