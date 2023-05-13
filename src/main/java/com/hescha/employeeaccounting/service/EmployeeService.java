@@ -82,10 +82,6 @@ public class EmployeeService extends CrudService<Employee> {
         return repository.findByTrainingsContains(trainings);
     }
 
-    public Employee findByUser(User user) {
-        return repository.findByUser(user);
-    }
-
 
     public Employee update(Long id, Employee entity) {
         Employee read = read(id);

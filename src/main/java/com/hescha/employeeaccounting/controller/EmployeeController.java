@@ -28,7 +28,6 @@ public class EmployeeController {
     private final VacationService vacationService;
     private final SickLeaveService sickLeaveService;
     private final TrainingService trainingService;
-    private final UserService userService;
 
     @GetMapping
     public String readAll(Model model) {
@@ -55,7 +54,6 @@ public class EmployeeController {
         model.addAttribute("vacation_list", vacationService.readAll());
         model.addAttribute("sickLeave_list", sickLeaveService.readAll());
         model.addAttribute("training_list", trainingService.readAll());
-        model.addAttribute("user_list", userService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -34,6 +33,6 @@ public class Employee extends AbstractEntity {
     @OneToMany(mappedBy = "employee")
     private Set<Training> trainings;
 
-    @OneToOne(mappedBy = "employee")
-    private User user;
+    @ManyToOne
+    private Role userRole;
 }

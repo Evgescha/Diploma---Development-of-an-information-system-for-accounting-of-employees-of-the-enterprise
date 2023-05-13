@@ -41,6 +41,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Set<Employee> findBySickLeavesContains(SickLeave sickLeaves);
 
     Set<Employee> findByTrainingsContains(Training trainings);
-
-    Employee findByUser(User user);
 }
