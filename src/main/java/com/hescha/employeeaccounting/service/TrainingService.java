@@ -64,5 +64,6 @@ public class TrainingService extends CrudService<Training> {
         read.setStartDate(entity.getStartDate());
         read.setEndDate(entity.getEndDate());
         read.setResult(entity.getResult());
+        read.setEmployee(entity.getEmployee());
     }
 }

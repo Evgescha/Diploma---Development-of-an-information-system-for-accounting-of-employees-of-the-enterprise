@@ -46,7 +46,7 @@ public class SickLeaveController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("employee_list", employeeService.readAll());
+        model.addAttribute("users", employeeService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

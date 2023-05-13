@@ -38,8 +38,10 @@
                     </p>
                     <p class="contact-form-subject">
                         <label for="employee">Employee:</label>
-                        <input type="text" aria-required="true" th:field="*{employee}" id="employee"
-                               class="form-control">
+                        <select th:field="*{employee}" class="form-control" style="min-height: 100px">
+                            <option value="" text=""></option>
+                            <option th:each="item : ${users}" th:value="${item.id}" th:text="${item}"></option>
+                        </select>
                     </p>
                     <p class="contact-form-submit vertical-margin-40">
                         <input type="text" class="form-control hidden" th:field="*{id}" id="id">

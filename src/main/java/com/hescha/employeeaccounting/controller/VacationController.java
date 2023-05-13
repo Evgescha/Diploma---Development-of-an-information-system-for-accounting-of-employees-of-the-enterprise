@@ -47,8 +47,8 @@ public class VacationController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("vacationStatus_list", VacationStatus.values());
-        model.addAttribute("employee_list", employeeService.readAll());
+        model.addAttribute("statuses", VacationStatus.values());
+        model.addAttribute("users", employeeService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

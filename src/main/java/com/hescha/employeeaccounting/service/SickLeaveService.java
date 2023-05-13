@@ -43,5 +43,6 @@ public class SickLeaveService extends CrudService<SickLeave> {
     private void updateFields(SickLeave entity, SickLeave read) {
         read.setStartDate(entity.getStartDate());
         read.setDuration(entity.getDuration());
+        read.setEmployee(entity.getEmployee());
     }
 }
