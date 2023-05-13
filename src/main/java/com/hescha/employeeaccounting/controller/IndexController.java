@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
-    @GetMapping("/404")
-    public String _404() {
-        return "404";
-    }
-
     public String index() {
         return "index";
     }
