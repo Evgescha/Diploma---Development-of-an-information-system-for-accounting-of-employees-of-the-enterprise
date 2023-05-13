@@ -566,20 +566,9 @@
 		</section>
 
 
-    <footer th:replace="~{/commons/footer :: footer}"></footer>
- 
+		<footer th:replace="~{/commons/footer :: footer}"></footer>
+		<section th:replace="~{/commons/copyright :: copyright}"></section>
+		<div th:replace="~{/commons/script :: script}"></div>
 
-<section th:replace="~{/commons/copyright :: copyright}"></section>
- 
-
-    <div class="preloader">
-        <div class="preloaderimg"></div>
-    </div>
-
-        <div th:replace="~{/commons/script :: script}"></div>
-
-		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-		<script type="text/javascript">stLight.options({publisher: "ur-6a7e320d-37d8-511-633d-4264e3ae8c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
-    </body>
+	</body>
 </html>
