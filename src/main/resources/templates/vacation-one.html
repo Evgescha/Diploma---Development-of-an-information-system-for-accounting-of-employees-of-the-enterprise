@@ -24,17 +24,9 @@
                         <th>endDate:</th>
                         <td th:text="${entity.endDate}"></td>
                     </tr>
-                    <tr>
-                        <th>duration:</th>
-                        <td th:text="${entity.duration}"></td>
-                    </tr>
-                    <tr>
-                        <th>status:</th>
-                        <td th:text="${entity.status}"></td>
-                    </tr>
-                    <tr>
+                    <tr th:if="#{entity.employee!= null}">
                         <th>employee:</th>
-                        <td th:text="${entity.employee}"></td>
+                        <td> <a th:href="'/employee/'+${entity.employee.id}" th:text="${entity.employee}"> </a></td>
                     </tr>
                 </table>
 

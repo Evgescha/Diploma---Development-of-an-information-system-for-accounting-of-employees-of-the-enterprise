@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public class Department extends AbstractEntity {
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Employee manager;
     @Override
     public String toString() {

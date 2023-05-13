@@ -16,8 +16,6 @@ public class Vacation extends AbstractEntity {
     private LocalDate startDate = LocalDate.now();
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate = LocalDate.now();
-    private int duration;
-    private VacationStatus status = VacationStatus.CREATED;
 
     @ManyToOne
     private Employee employee;

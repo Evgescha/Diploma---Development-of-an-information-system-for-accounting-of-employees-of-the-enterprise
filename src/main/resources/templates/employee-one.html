@@ -50,6 +50,8 @@
                 <div class="mt-4">
                     <a class="btn btn-secondary" th:href="@{/employee}">Back to the List</a>
                     <a class="btn btn-primary" th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
+                    <a class="btn btn-primary" th:href="@{/sickleave/forUser/{id}(id=${entity.id})}">Add sick leave</a>
+                    <a class="btn btn-primary" th:href="@{/vacation/forUser/{id}(id=${entity.id})}">Add vacation</a>
                     <form th:if="${entity.id!=null}" method="get"
                           th:action="'/employee/' + ${entity.id} + '/delete'"
                           style="display:inline;">
@@ -63,7 +65,7 @@
         <!--        employee sick leaves-->
         <div class="row">
             <div class="col-sm-12">
-                <h1>List of employee<strong>Sick Leaves</strong></h1>
+                <h1>List of employee <strong>Sick Leaves</strong></h1>
                 <h3 th:if="${message != null}" th:text="${message}"></h3>
                 <a class="btn btn-primary" th:href="@{/sickleave/edit}">Create new Sick Leave</a>
 
@@ -137,7 +139,7 @@
         <!--        employee vacations-->
         <div class="row">
             <div class="col-sm-12">
-                <h1>List of employee<strong>Vacations</strong></h1>
+                <h1>List of employee <strong>Vacations</strong></h1>
                 <h3 th:if="${message != null}" th:text="${message}"></h3>
                 <a class="btn btn-primary" th:href="@{/vacation/edit}">Create new Vacation</a>
 
@@ -147,8 +149,6 @@
                         <th>Type</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Duration</th>
-                        <th>Status</th>
                         <th>Employee</th>
                         <th>Action</th>
                     </tr>
@@ -158,8 +158,6 @@
                         <td th:text=${entity.type}></td>
                         <td th:text=${entity.startDate}></td>
                         <td th:text=${entity.endDate}></td>
-                        <td th:text=${entity.duration}></td>
-                        <td th:text=${entity.status}></td>
                         <td th:text=${entity.employee}></td>
                         <td>
                             <a class="btn btn-info" th:href="@{/vacation/{id}(id=${entity.id})}">See detail</a>

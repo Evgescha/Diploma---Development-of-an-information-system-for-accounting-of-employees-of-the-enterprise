@@ -1,7 +1,7 @@
 package com.hescha.employeeaccounting.controller;
 
+import com.hescha.employeeaccounting.model.Employee;
 import com.hescha.employeeaccounting.model.Vacation;
-import com.hescha.employeeaccounting.model.VacationStatus;
 import com.hescha.employeeaccounting.service.EmployeeService;
 import com.hescha.employeeaccounting.service.VacationService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 
 @Controller
@@ -39,6 +41,16 @@ public class VacationController {
         return THYMELEAF_TEMPLATE_ONE_ITEM_PAGE;
     }
 
+    @GetMapping("/forUser/{id}")
+    public String forUser(Model model, @PathVariable Long id) {
+        Employee employee = employeeService.read(id);
+        Vacation vacation = new Vacation();
+        vacation.setEmployee(employee);
+        model.addAttribute("entity", vacation);
+        model.addAttribute("users", List.of(employee));
+        return THYMELEAF_TEMPLATE_EDIT_PAGE;
+    }
+
     @GetMapping(path = {"/edit", "/edit/{id}"})
     public String editPage(Model model, @PathVariable(name = "id", required = false) Long id) {
         if (id == null) {
@@ -47,7 +59,6 @@ public class VacationController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("statuses", VacationStatus.values());
         model.addAttribute("users", employeeService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;

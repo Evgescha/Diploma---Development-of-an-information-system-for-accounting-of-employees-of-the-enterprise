@@ -30,7 +30,10 @@
                                 <li th:each="employees_item : ${entity.employees.size()}" th:text="${employees_item}"></li>
                             </ul>
                         </td>
-                        <td th:text="${entity.manager}"> - </td>
+                        <td th:if="${entity.manager!= null}">
+                            <a th:href="'/employee/'+${entity.manager.id}" th:text="${entity.manager}"> </a>
+                        </td>
+                        <td th:if="${entity.manager== null}"> There is no manager for this department </td>
                         <td>
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info" th:href="@{/department/{id}(id=${entity.id})}">See detail</a>

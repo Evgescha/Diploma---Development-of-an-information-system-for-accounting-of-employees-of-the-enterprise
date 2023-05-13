@@ -1,6 +1,8 @@
 package com.hescha.employeeaccounting.controller;
 
+import com.hescha.employeeaccounting.model.Employee;
 import com.hescha.employeeaccounting.model.SickLeave;
+import com.hescha.employeeaccounting.model.Vacation;
 import com.hescha.employeeaccounting.service.EmployeeService;
 import com.hescha.employeeaccounting.service.SickLeaveService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 
 @Controller
@@ -36,6 +40,16 @@ public class SickLeaveController {
     public String read(@PathVariable("id") Long id, Model model) {
         model.addAttribute("entity", service.read(id));
         return THYMELEAF_TEMPLATE_ONE_ITEM_PAGE;
+    }
+
+    @GetMapping("/forUser/{id}")
+    public String forUser(Model model, @PathVariable Long id) {
+        Employee employee = employeeService.read(id);
+        SickLeave sickLeave = new SickLeave();
+        sickLeave.setEmployee(employee);
+        model.addAttribute("entity", sickLeave);
+        model.addAttribute("users", List.of(employee));
+        return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
 
     @GetMapping(path = {"/edit", "/edit/{id}"})

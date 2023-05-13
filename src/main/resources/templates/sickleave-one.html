@@ -20,9 +20,9 @@
                         <th>Duration:</th>
                         <td th:text="${entity.duration}"></td>
                     </tr>
-                    <tr>
-                        <th>Employee:</th>
-                        <td th:text="${entity.employee}"></td>
+                    <tr th:if="${entity.employee!= null}">
+                        <th>employee:</th>
+                        <td> <a th:href="'/employee/'+${entity.employee.id}" th:text="${entity.employee}"> </a></td>
                     </tr>
                 </table>
 

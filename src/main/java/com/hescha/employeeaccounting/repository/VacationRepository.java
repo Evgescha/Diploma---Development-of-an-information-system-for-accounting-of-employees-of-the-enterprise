@@ -2,7 +2,6 @@ package com.hescha.employeeaccounting.repository;
 
 import com.hescha.employeeaccounting.model.Employee;
 import com.hescha.employeeaccounting.model.Vacation;
-import com.hescha.employeeaccounting.model.VacationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,10 +17,6 @@ public interface VacationRepository extends JpaRepository<Vacation, Long> {
     Vacation findByStartDate(LocalDate startDate);
 
     Vacation findByEndDate(LocalDate endDate);
-
-    Vacation findByDuration(int duration);
-
-    Vacation findByStatus(VacationStatus status);
 
     Vacation findByEmployee(Employee employee);
 }
