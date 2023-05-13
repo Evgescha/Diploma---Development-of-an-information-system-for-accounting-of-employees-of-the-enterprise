@@ -12,17 +12,17 @@
                 <form class="contact-form" action="/department" th:object="${entity}" method="post">
                     <p class="contact-form-name">
                         <label for="name">Name</label>
-                        <input type="text" aria-required="true" size="30" th:field="*{name}" id="name"
+                        <input type="text" aria-required="true" th:field="*{name}" id="name"
                                class="form-control" placeholder="Name">
                     </p>
                     <p class="contact-form-email">
                         <label for="description">Description</label>
-                        <textarea type="text" aria-required="true" size="30" th:field="*{description}" id="description"
+                        <textarea type="text" aria-required="true" th:field="*{description}" id="description"
                                   class="form-control" placeholder="Description"></textarea>
                     </p>
                     <p class="contact-form-email">
                         <label for="manager">Manager</label>
-                        <input type="text" aria-required="true" size="30" th:field="*{manager}" id="manager"
+                        <input type="text" aria-required="true" th:field="*{manager}" id="manager"
                                class="form-control">
                     </p>
                     <p class="contact-form-submit vertical-margin-40">

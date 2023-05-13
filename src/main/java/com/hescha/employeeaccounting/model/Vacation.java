@@ -1,6 +1,7 @@
 package com.hescha.employeeaccounting.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,8 +12,10 @@ import java.util.Date;
 @Data
 public class Vacation extends AbstractEntity {
     private String type;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate = LocalDate.now();
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate = LocalDate.now();
     private int duration;
     private VacationStatus status = VacationStatus.CREATED;
 

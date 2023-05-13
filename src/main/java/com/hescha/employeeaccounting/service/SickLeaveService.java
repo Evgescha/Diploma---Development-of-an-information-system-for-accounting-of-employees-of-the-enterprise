@@ -21,10 +21,6 @@ public class SickLeaveService extends CrudService<SickLeave> {
         return repository.findByStartDate(startDate);
     }
 
-    public SickLeave findByEndDate(LocalDate endDate) {
-        return repository.findByEndDate(endDate);
-    }
-
     public SickLeave findByDuration(int duration) {
         return repository.findByDuration(duration);
     }
@@ -46,7 +42,6 @@ public class SickLeaveService extends CrudService<SickLeave> {
 
     private void updateFields(SickLeave entity, SickLeave read) {
         read.setStartDate(entity.getStartDate());
-        read.setEndDate(entity.getEndDate());
         read.setDuration(entity.getDuration());
     }
 }

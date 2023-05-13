@@ -3,32 +3,37 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Edit position')}"></div>
-<h1>Edit Position</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<form th:action="@{/position}" th:object="${entity}" method="post">
 
-    <p>
-        <label for="title">title:</label>
-            <input type="text" th:field="*{title}" id="title" required>
-        </p>
-    <p>
-        <label for="description">description:</label>
-            <input type="text" th:field="*{description}" id="description" required>
-        </p>
-    <p>
-        <label for="employees">employees:</label>
-            <select multiple="multiple" th:field="*{employees}" id="employees">
-            <option th:each="employees_item : ${employees_list}" th:value="${employees_item}" th:text="${employees_item}"></option>
-        </select>
-        </p>
+<section id="middle" class="light_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12 to_animate">
+                <h1>Edit <strong>Position</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <form class="contact-form" th:action="@{/position}" th:object="${entity}" method="post">
 
-    <p>
-        <input type="text" th:field="*{id}" id="id">
-        <input type="submit" value="Save">
-        <a th:href="@{/position}">Cancel</a>
-    </p>
-</form>
+                    <p class="contact-form-name">
+                        <label for="title">Title:</label>
+                        <input type="text" aria-required="true" th:field="*{title}" id="title"
+                               class="form-control" placeholder="Title">
+                    </p>
+                    <p class="contact-form-email">
+                        <label for="description">Description:</label>
+                        <textarea type="text" aria-required="true" th:field="*{description}" id="description"
+                                  class="form-control" placeholder="Description"></textarea>
+                    </p>
 
+                    <p class="contact-form-submit vertical-margin-40">
+                        <input type="text" class="form-control hidden" th:field="*{id}" id="id">
+                        <input type="submit" value="Save" id="contact_form_submit" name="contact_submit"
+                               class="theme_btn">
+                        <a class="btn btn-secondary" th:href="@{/position}">Cancel</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <footer th:replace="~{/commons/footer :: footer}"></footer>

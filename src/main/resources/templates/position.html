@@ -3,41 +3,47 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Positions')}"></div>
-<h1>List of Position</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/position/edit}">Create new Position</a>
-<table>
-    <thead>
-    <tr>
-        <th>title</th>
-        <th>description</th>
-        <th>employees</th>
 
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr th:each="entity : ${list}">
-                                    <td th:text=${entity.title}></td>
-                                            <td th:text=${entity.description}></td>
-                                            <td>
-                    <ul>
-                        <li th:each="employees_item : ${entity.employees}" th:text="${employees_item}"></li>
-                    </ul>
-                </td>
-                
-        <td>
-            <a th:href="@{/position/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/position/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/position/'
-                  +${entity.id}+'/delete'">
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<section id="middle" class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>List of <strong>Positions</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary" th:href="@{/position/edit}">Create new Position</a>
+
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Employees</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${list}">
+                        <td th:text=${entity.title}></td>
+                        <td th:text=${entity.description}></td>
+                        <td>
+                            <ul>
+                                <li th:each="employees_item : ${entity.employees}" th:text="${employees_item}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/position/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/position/edit/{id}(id=${entity.id})}">Edit</a>
+                            <form th:if="${entity.id!=null}" method="get" th:action="'/position/' +${entity.id}+'/delete'">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <footer th:replace="~{/commons/footer :: footer}"></footer>

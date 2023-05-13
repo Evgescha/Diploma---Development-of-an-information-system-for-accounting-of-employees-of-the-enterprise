@@ -11,8 +11,6 @@ import java.time.LocalDate;
 public interface SickLeaveRepository extends JpaRepository<SickLeave, Long> {
     SickLeave findByStartDate(LocalDate startDate);
 
-    SickLeave findByEndDate(LocalDate endDate);
-
     SickLeave findByDuration(int duration);
 
     SickLeave findByEmployee(Employee employee);

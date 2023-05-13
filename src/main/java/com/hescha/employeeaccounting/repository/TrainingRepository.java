@@ -25,6 +25,4 @@ public interface TrainingRepository extends JpaRepository<Training, Long> {
     List<Training> findByResult(String result);
 
     List<Training> findByResultContains(String result);
-
-    Training findByEmployee(Employee employee);
 }

@@ -1,6 +1,5 @@
 package com.hescha.employeeaccounting.service;
 
-import com.hescha.employeeaccounting.model.Employee;
 import com.hescha.employeeaccounting.model.Training;
 import com.hescha.employeeaccounting.repository.*;
 import org.springframework.stereotype.Service;
@@ -50,11 +49,6 @@ public class TrainingService extends CrudService<Training> {
         return repository.findByResultContains(result);
     }
 
-    public Training findByEmployee(Employee employee) {
-        return repository.findByEmployee(employee);
-    }
-
-
     public Training update(Long id, Training entity) {
         Training read = read(id);
         if (read == null) {
@@ -62,7 +56,6 @@ public class TrainingService extends CrudService<Training> {
         }
         updateFields(entity, read);
         return update(read);
-
     }
 
     private void updateFields(Training entity, Training read) {
@@ -71,6 +64,5 @@ public class TrainingService extends CrudService<Training> {
         read.setStartDate(entity.getStartDate());
         read.setEndDate(entity.getEndDate());
         read.setResult(entity.getResult());
-        read.setEmployee(entity.getEmployee());
     }
 }

@@ -3,71 +3,66 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Edit employee')}"></div>
-<h1>Edit Employee</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<form th:action="@{/employee}" th:object="${entity}" method="post">
+<section id="middle" class="light_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12 to_animate">
+                <h1>Edit <strong>Employee</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <form class="contact-form" th:action="@{/employee}" th:object="${entity}" method="post">
+                    <p class="contact-form-name">
+                        <label for="firstName">First Name</label>
+                        <input type="text" aria-required="true" th:field="*{firstName}" id="firstName"
+                               class="form-control" placeholder="First Name">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" aria-required="true" th:field="*{lastName}" id="lastName"
+                               class="form-control" placeholder="Last Name">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" aria-required="true" th:field="*{middleName}" id="middleName"
+                               class="form-control" placeholder="Middle Name">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="birthDate">Birth Date</label>
+                        <input type="date" aria-required="true" th:field="*{birthDate}" id="birthDate"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" aria-required="true" th:field="*{phoneNumber}" id="phoneNumber"
+                               class="form-control" placeholder="Phone Number">
+                    </p>
+                    <p class="contact-form-email">
+                        <label for="email">Email</label>
+                        <input type="email" aria-required="true" th:field="*{email}" id="email"
+                               class="form-control" placeholder="Email">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="position">Position</label>
+                        <input type="text" aria-required="true" th:field="*{position}" id="position"
+                               class="form-control" placeholder="Position">
+                    </p>
+                    <p class="contact-form-name">
+                        <label for="department">Department</label>
+                        <input type="text" aria-required="true" th:field="*{department}" id="department"
+                               class="form-control" placeholder="Department">
+                    </p>
+                    <p class="contact-form-submit vertical-margin-40">
+                        <input type="text" class="form-control hidden" th:field="*{id}" id="id">
+                        <input type="submit" value="Save" id="contact_form_submit" name="contact_submit"
+                           class="theme_btn">
+                        <a class="btn btn-secondary" th:href="@{/employee}">Cancel</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <p>
-        <label for="firstName">firstName:</label>
-            <input type="text" th:field="*{firstName}" id="firstName" required>
-        </p>
-    <p>
-        <label for="lastName">lastName:</label>
-            <input type="text" th:field="*{lastName}" id="lastName" required>
-        </p>
-    <p>
-        <label for="middleName">middleName:</label>
-            <input type="text" th:field="*{middleName}" id="middleName" required>
-        </p>
-    <p>
-        <label for="birthDate">birthDate:</label>
-            <input type="text" th:field="*{birthDate}" id="birthDate" required>
-        </p>
-    <p>
-        <label for="phoneNumber">phoneNumber:</label>
-            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" required>
-        </p>
-    <p>
-        <label for="email">email:</label>
-            <input type="text" th:field="*{email}" id="email" required>
-        </p>
-    <p>
-        <label for="position">position:</label>
-            <input type="text" th:field="*{position}" id="position" required>
-        </p>
-    <p>
-        <label for="department">department:</label>
-            <input type="text" th:field="*{department}" id="department" required>
-        </p>
-    <p>
-        <label for="vacations">vacations:</label>
-            <select multiple="multiple" th:field="*{vacations}" id="vacations">
-            <option th:each="vacations_item : ${vacations_list}" th:value="${vacations_item}" th:text="${vacations_item}"></option>
-        </select>
-        </p>
-    <p>
-        <label for="sickLeaves">sickLeaves:</label>
-            <select multiple="multiple" th:field="*{sickLeaves}" id="sickLeaves">
-            <option th:each="sickLeaves_item : ${sickLeaves_list}" th:value="${sickLeaves_item}" th:text="${sickLeaves_item}"></option>
-        </select>
-        </p>
-    <p>
-        <label for="trainings">trainings:</label>
-            <select multiple="multiple" th:field="*{trainings}" id="trainings">
-            <option th:each="trainings_item : ${trainings_list}" th:value="${trainings_item}" th:text="${trainings_item}"></option>
-        </select>
-        </p>
-    <p>
-        <label for="user">user:</label>
-            <input type="text" th:field="*{user}" id="user" required>
-        </p>
 
-    <p>
-        <input type="text" th:field="*{id}" id="id">
-        <input type="submit" value="Save">
-        <a th:href="@{/employee}">Cancel</a>
-    </p>
-</form>
 
 
 

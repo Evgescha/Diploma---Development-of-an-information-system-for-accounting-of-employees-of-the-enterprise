@@ -3,67 +3,54 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Employee')}"></div>
-<h1>List of Employee</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/employee/edit}">Create new Employee</a>
-<table>
-    <thead>
-    <tr>
-        <th>firstName</th>
-        <th>lastName</th>
-        <th>middleName</th>
-        <th>birthDate</th>
-        <th>phoneNumber</th>
-        <th>email</th>
-        <th>position</th>
-        <th>department</th>
-        <th>vacations</th>
-        <th>sickLeaves</th>
-        <th>trainings</th>
-        <th>user</th>
 
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr th:each="entity : ${list}">
-                                    <td th:text=${entity.firstName}></td>
-                                            <td th:text=${entity.lastName}></td>
-                                            <td th:text=${entity.middleName}></td>
-                                            <td th:text=${entity.birthDate}></td>
-                                            <td th:text=${entity.phoneNumber}></td>
-                                            <td th:text=${entity.email}></td>
-                                            <td th:text=${entity.position}></td>
-                                            <td th:text=${entity.department}></td>
-                                            <td>
-                    <ul>
-                        <li th:each="vacations_item : ${entity.vacations}" th:text="${vacations_item}"></li>
-                    </ul>
-                </td>
-                                            <td>
-                    <ul>
-                        <li th:each="sickLeaves_item : ${entity.sickLeaves}" th:text="${sickLeaves_item}"></li>
-                    </ul>
-                </td>
-                                            <td>
-                    <ul>
-                        <li th:each="trainings_item : ${entity.trainings}" th:text="${trainings_item}"></li>
-                    </ul>
-                </td>
-                                            <td th:text=${entity.user}></td>
-                
-        <td>
-            <a th:href="@{/employee/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/employee/'
-                  +${entity.id}+'/delete'">
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<section id="middle" class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>List of <strong>Employees</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary" th:href="@{/employee/edit}">Create new Employee</a>
+
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Middle Name</th>
+                        <th>Birth Date</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${list}">
+                        <td th:text=${entity.firstName}></td>
+                        <td th:text=${entity.lastName}></td>
+                        <td th:text=${entity.middleName}></td>
+                        <td th:text=${entity.birthDate}></td>
+                        <td th:text=${entity.phoneNumber}></td>
+                        <td th:text=${entity.email}></td>
+                        <td th:text=${entity.position}></td>
+                        <td th:text=${entity.department}></td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/employee/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
+                            <form th:if="${entity.id!=null}" method="get" th:action="'/employee/' +${entity.id}+'/delete'">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 <footer th:replace="~{/commons/footer :: footer}"></footer>

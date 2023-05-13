@@ -1,8 +1,10 @@
 package com.hescha.employeeaccounting.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
@@ -16,7 +18,8 @@ public class Employee extends AbstractEntity {
     private String firstName;
     private String lastName;
     private String middleName;
-    private LocalDate birthDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate = LocalDate.now();
     private String phoneNumber;
     private String email;
 
@@ -32,7 +35,7 @@ public class Employee extends AbstractEntity {
     @OneToMany(mappedBy = "employee")
     private Set<SickLeave> sickLeaves = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
-    @OneToMany(mappedBy = "employee")
+    @ManyToMany(mappedBy = "employee")
     private Set<Training> trainings = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
     @ManyToOne

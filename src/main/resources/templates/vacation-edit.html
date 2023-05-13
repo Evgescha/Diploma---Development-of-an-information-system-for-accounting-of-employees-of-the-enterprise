@@ -3,41 +3,55 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Edit vacation')}"></div>
-<h1>Edit Vacation</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<form th:action="@{/vacation}" th:object="${entity}" method="post">
 
-    <p>
-        <label for="type">type:</label>
-            <input type="text" th:field="*{type}" id="type" required>
-        </p>
-    <p>
-        <label for="startDate">startDate:</label>
-            <input type="text" th:field="*{startDate}" id="startDate" required>
-        </p>
-    <p>
-        <label for="endDate">endDate:</label>
-            <input type="text" th:field="*{endDate}" id="endDate" required>
-        </p>
-    <p>
-        <label for="duration">duration:</label>
-            <input type="text" th:field="*{duration}" id="duration" required>
-        </p>
-    <p>
-        <label for="status">status:</label>
-            <input type="text" th:field="*{status}" id="status" required>
-        </p>
-    <p>
-        <label for="employee">employee:</label>
-            <input type="text" th:field="*{employee}" id="employee" required>
-        </p>
-
-    <p>
-        <input type="text" th:field="*{id}" id="id">
-        <input type="submit" value="Save">
-        <a th:href="@{/vacation}">Cancel</a>
-    </p>
-</form>
+<section id="middle" class="light_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12 to_animate">
+                <h1>Edit <strong>Vacation</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <form class="contact-form" th:action="@{/vacation}" th:object="${entity}" method="post">
+                    <p class="contact-form-name">
+                        <label for="type">Type:</label>
+                        <input type="text" aria-required="true" th:field="*{type}" id="type"
+                               class="form-control" placeholder="Type">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" aria-required="true" th:field="*{startDate}" id="startDate"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" aria-required="true" th:field="*{endDate}" id="endDate"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="duration">Duration:</label>
+                        <input type="text" aria-required="true" th:field="*{duration}" id="duration"
+                               class="form-control" placeholder="Duration">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="status">Status:</label>
+                        <input type="text" aria-required="true" th:field="*{status}" id="status"
+                               class="form-control" placeholder="Status">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="employee">Employee:</label>
+                        <input type="text" aria-required="true" th:field="*{employee}" id="employee"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-submit vertical-margin-40">
+                        <input type="text" class="form-control hidden" th:field="*{id}" id="id">
+                        <input type="submit" value="Save" id="contact_form_submit" name="contact_submit"
+                               class="theme_btn">
+                        <a class="btn btn-secondary" th:href="@{/vacation}">Cancel</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 

@@ -3,33 +3,42 @@
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
 <div th:replace="~{/commons/abovecontent :: abovecontent('Edit sick leave')}"></div>
-<h1>Edit SickLeave</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<form th:action="@{/sickLeave}" th:object="${entity}" method="post">
 
-    <p>
-        <label for="startDate">startDate:</label>
-            <input type="text" th:field="*{startDate}" id="startDate" required>
-        </p>
-    <p>
-        <label for="endDate">endDate:</label>
-            <input type="text" th:field="*{endDate}" id="endDate" required>
-        </p>
-    <p>
-        <label for="duration">duration:</label>
-            <input type="text" th:field="*{duration}" id="duration" required>
-        </p>
-    <p>
-        <label for="employee">employee:</label>
-            <input type="text" th:field="*{employee}" id="employee" required>
-        </p>
+<section id="middle" class="light_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12 to_animate">
+                <h1>Edit <strong>Sick Leave</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <form class="contact-form" th:action="@{/sickleave}" th:object="${entity}" method="post">
 
-    <p>
-        <input type="text" th:field="*{id}" id="id">
-        <input type="submit" value="Save">
-        <a th:href="@{/sickLeave}">Cancel</a>
-    </p>
-</form>
+                    <p class="contact-form-name">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" aria-required="true" th:field="*{startDate}" id="startDate"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="duration">Duration:</label>
+                        <input type="text" aria-required="true" th:field="*{duration}" id="duration"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-subject">
+                        <label for="employee">Employee:</label>
+                        <input type="text" aria-required="true" th:field="*{employee}" id="employee"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-submit vertical-margin-40">
+                        <input type="text" class="form-control hidden" th:field="*{id}" id="id">
+                        <input type="submit" value="Save" id="contact_form_submit" name="contact_submit"
+                               class="theme_btn">
+                        <a class="btn btn-secondary" th:href="@{/sickleave}">Cancel</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 
