@@ -12,12 +12,6 @@ public class IndexController {
         return "404";
     }
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
-
-    @GetMapping("/")
     public String index() {
         return "index";
     }

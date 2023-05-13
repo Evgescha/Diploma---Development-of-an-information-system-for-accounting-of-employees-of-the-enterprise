@@ -31,7 +31,7 @@
                         <td th:text=${entity.startDate}></td>
                         <td th:text=${entity.endDate}></td>
                         <td th:text=${entity.result}></td>
-                        <td th:text=${entity.employee}></td>
+                        <td th:text=${entity.employee.size}></td>
                         <td>
                             <a class="btn btn-info" th:href="@{/training/{id}(id=${entity.id})}">See detail</a>
                             <a class="btn btn-primary" th:href="@{/training/edit/{id}(id=${entity.id})}">Edit</a>
