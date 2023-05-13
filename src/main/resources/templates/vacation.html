@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head th:replace="~{/commons/head :: head}"></head>
+<body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Vacations')}"></div>
+<h1>List of Vacation</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<a th:href="@{/vacation/edit}">Create new Vacation</a>
+<table>
+    <thead>
+    <tr>
+        <th>type</th>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>duration</th>
+        <th>status</th>
+        <th>employee</th>
+
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="entity : ${list}">
+                                    <td th:text=${entity.type}></td>
+                                            <td th:text=${entity.startDate}></td>
+                                            <td th:text=${entity.endDate}></td>
+                                            <td th:text=${entity.duration}></td>
+                                            <td th:text=${entity.status}></td>
+                                            <td th:text=${entity.employee}></td>
+                
+        <td>
+            <a th:href="@{/vacation/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/vacation/edit/{id}(id=${entity.id})}">Edit</a>
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/vacation/'
+                  +${entity.id}+'/delete'">
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
+</body>
+</html>

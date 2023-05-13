@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>List of Vacation</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>List of Vacation</h1>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Sick leaves')}"></div>
+<h1>List of SickLeave</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/vacation/edit}">Create new Vacation</a>
+<a th:href="@{/sickLeave/edit}">Create new SickLeave</a>
 <table>
     <thead>
     <tr>
-        <th>type</th>
         <th>startDate</th>
         <th>endDate</th>
         <th>duration</th>
-        <th>status</th>
         <th>employee</th>
 
         <th>Action</th>
@@ -23,18 +19,16 @@
     </thead>
     <tbody>
         <tr th:each="entity : ${list}">
-                                    <td th:text=${entity.type}></td>
-                                            <td th:text=${entity.startDate}></td>
+                                    <td th:text=${entity.startDate}></td>
                                             <td th:text=${entity.endDate}></td>
                                             <td th:text=${entity.duration}></td>
-                                            <td th:text=${entity.status}></td>
                                             <td th:text=${entity.employee}></td>
                 
         <td>
-            <a th:href="@{/vacation/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/vacation/edit/{id}(id=${entity.id})}">Edit</a>
+            <a th:href="@{/sickLeave/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/sickLeave/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/vacation/'
+                  th:action="'/sickLeave/'
                   +${entity.id}+'/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
@@ -42,5 +36,11 @@
     </tr>
     </tbody>
 </table>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>

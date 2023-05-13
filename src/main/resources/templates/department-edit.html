@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head th:replace="~{/commons/head :: head}"></head>
+<body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Edit department')}"></div>
+<section id="middle" class="light_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12 to_animate">
+                <h1>Edit <strong>Department</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <form class="contact-form" action="/department" th:object="${entity}" method="post">
+                    <p class="contact-form-name">
+                        <label for="name">Name</label>
+                        <input type="text" aria-required="true" size="30" th:field="*{name}" id="name"
+                               class="form-control" placeholder="Name">
+                    </p>
+                    <p class="contact-form-email">
+                        <label for="description">Description</label>
+                        <textarea type="text" aria-required="true" size="30" th:field="*{description}" id="description"
+                                  class="form-control" placeholder="Description"></textarea>
+                    </p>
+                    <p class="contact-form-email">
+                        <label for="manager">Manager</label>
+                        <input type="text" aria-required="true" size="30" th:field="*{manager}" id="manager"
+                               class="form-control">
+                    </p>
+                    <p class="contact-form-submit vertical-margin-40">
+                        <input type="text" class="form-control hidden" th:field="*{id}" id="id">
+                        <input type="submit" value="Save" id="contact_form_submit" name="contact_submit"
+                               class="theme_btn">
+                        <a class="btn btn-secondary" th:href="@{/department}">Cancel</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
+</body>
+</html>

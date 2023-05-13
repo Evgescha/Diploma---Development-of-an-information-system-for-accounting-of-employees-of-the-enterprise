@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>List of Department</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>List of Department</h1>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Positions')}"></div>
+<h1>List of Position</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/department/edit}">Create new Department</a>
+<a th:href="@{/position/edit}">Create new Position</a>
 <table>
     <thead>
     <tr>
-        <th>name</th>
+        <th>title</th>
         <th>description</th>
         <th>employees</th>
-        <th>manager</th>
 
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
         <tr th:each="entity : ${list}">
-                                    <td th:text=${entity.name}></td>
+                                    <td th:text=${entity.title}></td>
                                             <td th:text=${entity.description}></td>
                                             <td>
                     <ul>
                         <li th:each="employees_item : ${entity.employees}" th:text="${employees_item}"></li>
                     </ul>
                 </td>
-                                            <td th:text=${entity.manager}></td>
                 
         <td>
-            <a th:href="@{/department/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/department/edit/{id}(id=${entity.id})}">Edit</a>
+            <a th:href="@{/position/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/position/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/department/'
+                  th:action="'/position/'
                   +${entity.id}+'/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
@@ -42,5 +38,12 @@
     </tr>
     </tbody>
 </table>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>
+

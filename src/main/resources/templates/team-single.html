@@ -2,19 +2,7 @@
 <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
-
-<section id="abovecontent" class="color_section">
-    <div class="container">
-        <div class="row">
-            <div class="block col-sm-12">
-                <ul class="breadcrumb">
-                    <li><a href="/" class="pathway"><i class="rt-icon-home"></i></a></li>
-                    <li><span>Team Member</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Team Member')}"></div>
 
 <section class="grey_section">
     <div class="container">
@@ -40,11 +28,6 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, voluptates, nemo,
                                 quaerat culpa sunt <a href="#">quibusdam</a> vitae doloremque molestias voluptatum id
                                 mollitia quas aliquid eum eius reiciendis aut illo repellendus ipsa.</p>
-                            <p class="team-social">
-                                <a class="socialico-twitter" href="#" title="Twitter">#</a>
-                                <a class="socialico-facebook" href="#" title="Facebook">#</a>
-                                <a class="socialico-google" href="#" title="LinkedIn">#</a>
-                            </p>
                         </div>
                     </div>
                 </div>

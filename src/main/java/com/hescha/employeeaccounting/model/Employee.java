@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Entity
 @Data
@@ -25,13 +27,13 @@ public class Employee extends AbstractEntity {
     private Department department;
 
     @OneToMany(mappedBy = "employee")
-    private Set<Vacation> vacations;
+    private Set<Vacation> vacations = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
     @OneToMany(mappedBy = "employee")
-    private Set<SickLeave> sickLeaves;
+    private Set<SickLeave> sickLeaves = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
     @OneToMany(mappedBy = "employee")
-    private Set<Training> trainings;
+    private Set<Training> trainings = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
     @ManyToOne
     private Role userRole;

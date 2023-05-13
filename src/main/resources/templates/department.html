@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head th:replace="~{/commons/head :: head}"></head>
+<body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Departments')}"></div>
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>List of <strong>Departments</strong></h2>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary mb-3" th:href="@{/department/edit}">Create new Department</a>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Employees count</th>
+                        <th>Manager</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${list}">
+                        <td th:text="${entity.name}"></td>
+                        <td th:text="${entity.description}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="employees_item : ${entity.employees.size()}" th:text="${employees_item}"></li>
+                            </ul>
+                        </td>
+                        <td th:text="${entity.manager}"> - </td>
+                        <td>
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info" th:href="@{/department/{id}(id=${entity.id})}">See detail</a>
+                                <a class="btn btn-success" th:href="@{/department/edit/{id}(id=${entity.id})}">Edit</a>
+                                <form th:if="${entity.id!=null}" method="get" th:action="'/department/' +${entity.id}+'/delete'">
+                                    <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
+</body>
+</html>

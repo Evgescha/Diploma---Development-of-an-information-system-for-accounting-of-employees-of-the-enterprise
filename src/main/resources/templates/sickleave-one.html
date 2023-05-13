@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>View Training</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>Training Details</h1>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Sick leave detail')}"></div>
+<h1>SickLeave Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
-        <tr>
-        <th>title:</th>
-                <td th:text="${entity.title}"></td>
-            </tr>
-        <tr>
-        <th>description:</th>
-                <td th:text="${entity.description}"></td>
-            </tr>
         <tr>
         <th>startDate:</th>
                 <td th:text="${entity.startDate}"></td>
@@ -25,8 +15,8 @@
                 <td th:text="${entity.endDate}"></td>
             </tr>
         <tr>
-        <th>result:</th>
-                <td th:text="${entity.result}"></td>
+        <th>duration:</th>
+                <td th:text="${entity.duration}"></td>
             </tr>
         <tr>
         <th>employee:</th>
@@ -36,12 +26,18 @@
 
 </table>
 <br>
-<a th:href="@{/training}">Back to the List</a>
-<a th:href="@{/training/edit/{id}(id=${entity.id})}">Edit</a>
+<a th:href="@{/sickleave}">Back to the List</a>
+<a th:href="@{/sickleave/edit/{id}(id=${entity.id})}">Edit</a>
 <form th:if="${entity.id!=null}" method="get"
-         th:action="'/training/'
+         th:action="'/sickleave/'
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>

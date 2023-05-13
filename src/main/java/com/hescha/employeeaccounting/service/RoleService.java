@@ -37,5 +37,6 @@ public class RoleService extends CrudService<Role> {
 
     private void updateFields(Role entity, Role read) {
         read.setName(entity.getName());
+        read.setDescription(entity.getDescription());
     }
 }

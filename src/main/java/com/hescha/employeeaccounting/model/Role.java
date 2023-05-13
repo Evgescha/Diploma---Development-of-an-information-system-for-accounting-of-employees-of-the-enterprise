@@ -8,4 +8,5 @@ import javax.persistence.Entity;
 @Data
 public class Role extends AbstractEntity {
     private String name;
+    private String description;
 }

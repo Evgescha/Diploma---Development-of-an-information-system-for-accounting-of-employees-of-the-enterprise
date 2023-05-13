@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit SickLeave</title>
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Edit sick leave')}"></div>
 <h1>Edit SickLeave</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <form th:action="@{/sickLeave}" th:object="${entity}" method="post">
@@ -33,5 +31,12 @@
     </p>
 </form>
 
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>
+

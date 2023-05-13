@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section th:fragment="abovecontent(title)" id="abovecontent" class="color_section">
+    <div class="container">
+        <div class="row">
+            <div class="block col-sm-12">
+                <ul class="breadcrumb">
+                    <li><a href="/" class="pathway"><i class="rt-icon-home"></i></a></li>
+                    <li><span th:text="${title}"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -3,24 +3,12 @@
 <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
-
-<section id="abovecontent" class="color_section">
-    <div class="container">
-        <div class="row">
-            <div class="block col-sm-12">
-                <ul class="breadcrumb">
-                    <li><a href="/" class="pathway"><i class="rt-icon-home"></i></a></li>
-                    <li><span>Contact</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Contact')}"></div>
 
 <section id="middle" class="light_section">
     <div class="container">
         <div class="row">
-            <div class="block col-sm-6 to_animate">
+            <div class="block col-sm-12 to_animate">
                 <h3>Contact <strong>Form</strong></h3>
                 <form class="contact-form" method="post" action="/">
                     <p class="contact-form-name">
@@ -48,21 +36,6 @@
                                class="theme_btn">
                     </p>
                 </form>
-            </div>
-            <div class="block col-sm-6 to_animate">
-                <h3>Contact <strong>Info</strong></h3>
-                <div class="widget_text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, quos, provident, quo culpa
-                        sapiente numquam eum voluptatem neque ipsum suscipit eaque reprehenderit consequatur illo
-                        aperiam hic aliquam maxime laboriosam eos?</p>
-                    <p>
-                        <i class="rt-icon-location"></i><strong>Adderss:</strong> 4321 Your Address, Country<br>
-                        <i class="rt-icon-megaphone"></i><strong>Phone:</strong> +12 345 678 9123<br>
-                        <i class="rt-icon-mail2"></i><strong>Email: </strong><a href="mailto:info@thebest.com">info@thebest.com</a><br>
-                        <i class="rt-icon-world"></i><strong>Website: </strong><a href="/">www.thebest.com</a>
-                    </p>
-
-                </div>
             </div>
         </div>
     </div>

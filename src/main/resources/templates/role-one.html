@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>View Role</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Role detail')}"></div>
 <h1>Role Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
@@ -23,5 +21,11 @@
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>

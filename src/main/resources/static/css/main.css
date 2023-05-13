@@ -1802,7 +1802,7 @@ transition: all 0.3s ease-in-out;
 .comment-content {padding: 0 0 9px 100px;}
 .comment-respond {margin-top: 0px;}
 .comment-reply-title {margin: 0 0 22px; font-size: 30px;}
-.comment-respond label, .contact-form label {display: none;}
+/*.comment-respond label, .contact-form label {display: none;}*/
 form.contact-form {margin-top: 0px; margin-bottom: 20px; margin:0 auto;}
 form.contact-form input, form.contact-form textarea {}
 p.comment-form-author, p.comment-form-email, p.comment-form-url {

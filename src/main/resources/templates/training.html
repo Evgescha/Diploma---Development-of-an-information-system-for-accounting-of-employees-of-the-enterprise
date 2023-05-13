@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>List of Training</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Trainings')}"></div>
 <h1>List of Training</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <a th:href="@{/training/edit}">Create new Training</a>
@@ -42,5 +40,11 @@
     </tr>
     </tbody>
 </table>
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
+
 </body>
 </html>

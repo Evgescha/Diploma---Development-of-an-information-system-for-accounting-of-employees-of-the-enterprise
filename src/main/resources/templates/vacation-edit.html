@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Vacation</title>
-</head>
+<head th:replace="~{/commons/head :: head}"></head>
 <body>
+<header th:replace="~{/commons/header :: header}"></header>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Edit vacation')}"></div>
 <h1>Edit Vacation</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <form th:action="@{/vacation}" th:object="${entity}" method="post">
@@ -40,6 +38,12 @@
         <a th:href="@{/vacation}">Cancel</a>
     </p>
 </form>
+
+
+
+<footer th:replace="~{/commons/footer :: footer}"></footer>
+<section th:replace="~{/commons/copyright :: copyright}"></section>
+<div th:replace="~{/commons/script :: script}"></div>
 
 </body>
 </html>
