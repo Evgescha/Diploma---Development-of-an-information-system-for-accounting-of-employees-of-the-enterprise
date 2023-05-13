@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -41,4 +42,23 @@ public class Employee extends AbstractEntity {
 
     @ManyToOne
     private Role role;
+
+    @Override
+    public String toString() {
+        return id + " - " + lastName + " " + firstName + " " + middleName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(middleName, employee.middleName) && Objects.equals(birthDate, employee.birthDate) && Objects.equals(phoneNumber, employee.phoneNumber) && Objects.equals(email, employee.email) && Objects.equals(image, employee.image) && Objects.equals(position, employee.position) && Objects.equals(department, employee.department) && Objects.equals(role, employee.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), firstName, lastName, middleName, birthDate, phoneNumber, email, image, position, department, role);
+    }
 }

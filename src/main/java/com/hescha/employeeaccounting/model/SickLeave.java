@@ -16,4 +16,8 @@ public class SickLeave extends AbstractEntity {
 
     @ManyToOne
     private Employee employee;
+    @Override
+    public String toString() {
+        return employee!=null?employee.getFirstName():"" +" "+ startDate ;
+    }
 }

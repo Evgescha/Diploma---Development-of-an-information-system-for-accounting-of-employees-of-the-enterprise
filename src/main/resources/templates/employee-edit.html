@@ -46,19 +46,25 @@
                                class="form-control" placeholder="">
                     </p>
                     <p class="contact-form-name">
-                        <label for="position">Position</label>
-                        <input type="text" aria-required="true" th:field="*{position}" id="position"
-                               class="form-control" placeholder="">
+                        <label>Position</label>
+                        <select th:field="*{position}" class="form-control" style="min-height: 100px">
+                            <option value="" text=""></option>
+                            <option th:each="item : ${positions}" th:value="${item.id}" th:text="${item}"></option>
+                        </select>
                     </p>
                     <p class="contact-form-name">
-                        <label for="role">Role</label>
-                        <input type="text" aria-required="true" th:field="*{role}" id="role"
-                               class="form-control" placeholder="">
+                        <label>Role</label>
+                        <select th:field="*{role}" class="form-control" style="min-height: 100px">
+                            <option value="" text=""></option>
+                            <option th:each="item : ${roles}" th:value="${item.id}" th:text="${item}"></option>
+                        </select>
                     </p>
                     <p class="contact-form-name">
-                        <label for="department">Department</label>
-                        <input type="text" aria-required="true" th:field="*{department}" id="department"
-                               class="form-control" placeholder="">
+                        <label>Department</label>
+                        <select th:field="*{department}" class="form-control" style="min-height: 100px">
+                            <option value="" text=""></option>
+                            <option th:each="item : ${departments}" th:value="${item.id}" th:text="${item}"></option>
+                        </select>
                     </p>
                     <p class="contact-form-submit vertical-margin-40">
                         <input type="text" class="form-control hidden" th:field="*{id}" id="id">

@@ -107,5 +107,6 @@ public class EmployeeService extends CrudService<Employee> {
         read.setImage(entity.getImage());
         read.setPosition(entity.getPosition());
         read.setDepartment(entity.getDepartment());
+        read.setRole(entity.getRole());
     }
 }

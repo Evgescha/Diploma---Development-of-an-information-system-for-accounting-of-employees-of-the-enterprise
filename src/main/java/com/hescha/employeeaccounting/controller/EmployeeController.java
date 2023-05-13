@@ -25,9 +25,7 @@ public class EmployeeController {
 
     private final PositionService positionService;
     private final DepartmentService departmentService;
-    private final VacationService vacationService;
-    private final SickLeaveService sickLeaveService;
-    private final TrainingService trainingService;
+    private final RoleService roleService;
 
     @GetMapping
     public String readAll(Model model) {
@@ -49,11 +47,9 @@ public class EmployeeController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("position_list", positionService.readAll());
-        model.addAttribute("department_list", departmentService.readAll());
-        model.addAttribute("vacation_list", vacationService.readAll());
-        model.addAttribute("sickLeave_list", sickLeaveService.readAll());
-        model.addAttribute("training_list", trainingService.readAll());
+        model.addAttribute("positions", positionService.readAll());
+        model.addAttribute("departments", departmentService.readAll());
+        model.addAttribute("roles", roleService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

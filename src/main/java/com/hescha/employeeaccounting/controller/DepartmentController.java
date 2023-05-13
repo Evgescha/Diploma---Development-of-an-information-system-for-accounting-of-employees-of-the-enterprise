@@ -23,7 +23,6 @@ public class DepartmentController {
     public static final String REDIRECT_TO_ALL_ITEMS = "redirect:" + CURRENT_ADDRESS;
 
     private final DepartmentService service;
-
     private final EmployeeService employeeService;
 
     @GetMapping
@@ -46,8 +45,7 @@ public class DepartmentController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("employee_list", employeeService.readAll());
-        model.addAttribute("employee_list", employeeService.readAll());
+        model.addAttribute("users", employeeService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
