@@ -2,88 +2,226 @@
 <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <header th:replace="~{/commons/header :: header}"></header>
-<div th:replace="~{/commons/abovecontent :: abovecontent('Employee detail')}"></div>
+<div th:replace="~{/commons/abovecontent :: abovecontent('Team Member')}"></div>
 
-<section id="middle" class="light_section">
+<section class="grey_section">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1><strong>Employee</strong> Details</h1>
-                <h3 th:if="${message!=null}" th:text="${message}"></h3>
-                <table class="table table-bordered">
-                    <tr>
-                        <th>firstName:</th>
-                        <td th:text="${entity.firstName}"></td>
-                    </tr>
-                    <tr>
-                        <th>lastName:</th>
-                        <td th:text="${entity.lastName}"></td>
-                    </tr>
-                    <tr>
-                        <th>middleName:</th>
-                        <td th:text="${entity.middleName}"></td>
-                    </tr>
-                    <tr>
-                        <th>birthDate:</th>
-                        <td th:text="${entity.birthDate}"></td>
-                    </tr>
-                    <tr>
-                        <th>phoneNumber:</th>
-                        <td th:text="${entity.phoneNumber}"></td>
-                    </tr>
-                    <tr>
-                        <th>email:</th>
-                        <td th:text="${entity.email}"></td>
-                    </tr>
-                    <tr>
-                        <th>position:</th>
-                        <td th:text="${entity.position}"></td>
-                    </tr>
-                    <tr>
-                        <th>department:</th>
-                        <td th:text="${entity.department}"></td>
-                    </tr>
-                    <tr>
-                        <th>vacations:</th>
-                        <td>
-                            <ul>
-                                <li th:each="vacations_item : ${entity.vacations}" th:text="${vacations_item}"></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>sickLeaves:</th>
-                        <td>
-                            <ul>
-                                <li th:each="sickLeaves_item : ${entity.sickLeaves}" th:text="${sickLeaves_item}"></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>trainings:</th>
-                        <td>
-                            <ul>
-                                <li th:each="trainings_item : ${entity.trainings}" th:text="${trainings_item}"></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-
+                <h2>Employee <strong>Details</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="member media light_section">
+                    <div class="pull-left col-md-6">
+                        <img th:src="${entity.image}" alt="image01" class="media-object">
+                    </div>
+                    <div class="media-body col-md-6">
+                        <div class="member-description">
+                            <h3>
+                                <span th:text="${entity.firstName}"></span>
+                                <strong><span th:text="${entity.lastName}"></span></strong>
+                            </h3>
+                            <p>
+                                <span style="font-weight: bold" th:text="${entity.firstName}"></span>
+                                <span style="font-weight: bold" th:text="${entity.lastName}"></span> is an employee at
+                                our company.
+                                They were born on <span style="font-weight: bold" th:text="${entity.birthDate}"></span>
+                                and can be contacted at <span style="font-weight: bold"
+                                                              th:text="${entity.email}"></span>
+                                or <span style="font-weight: bold" th:text="${entity.phoneNumber}"></span>.
+                            </p>
+                            <p>
+                                They currently hold the position of <span style="font-weight: bold"
+                                                                          th:text="${entity.position}"></span>
+                                in the <span style="font-weight: bold" th:text="${entity.department}"></span>
+                                department.
+                            <p>If you have any further inquiries regarding
+                                <span style="font-weight: bold" th:text="${entity.firstName}"></span>,
+                                please feel free to reach out.</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="mt-4">
                     <a class="btn btn-secondary" th:href="@{/employee}">Back to the List</a>
                     <a class="btn btn-primary" th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
                     <form th:if="${entity.id!=null}" method="get"
                           th:action="'/employee/' + ${entity.id} + '/delete'"
                           style="display:inline;">
-                        <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure?')"
+                               class="btn btn-danger">
                     </form>
                 </div>
+            </div>
+        </div>
+
+        <!--        employee sick leaves-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>List of employee<strong>Sick Leaves</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary" th:href="@{/sickleave/edit}">Create new Sick Leave</a>
+
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>Start Date</th>
+                        <th>Duration</th>
+                        <th>Employee</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${entity.sickLeaves}">
+                        <td th:text=${entity.startDate}></td>
+                        <td th:text=${entity.duration}></td>
+                        <td th:text=${entity.employee}></td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/sickleave/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/sickleave/edit/{id}(id=${entity.id})}">Edit</a>
+                            <form th:if="${entity.id!=null}" method="get" th:action="'/sickleave/' +${entity.id}+'/delete'">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--        employee trainings-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>List of employee <strong>Trainings</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary" th:href="@{/training/edit}">Create new Training</a>
+
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Result</th>
+                        <th>Employee</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${entity.trainings}">
+                        <td th:text=${entity.title}></td>
+                        <td th:text=${entity.description}></td>
+                        <td th:text=${entity.startDate}></td>
+                        <td th:text=${entity.endDate}></td>
+                        <td th:text=${entity.result}></td>
+                        <td th:text=${entity.employee.size}></td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/training/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/training/edit/{id}(id=${entity.id})}">Edit</a>
+                            <form th:if="${entity.id!=null}" method="get" th:action="'/training/' +${entity.id}+'/delete'">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--        employee vacations-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>List of employee<strong>Vacations</strong></h1>
+                <h3 th:if="${message != null}" th:text="${message}"></h3>
+                <a class="btn btn-primary" th:href="@{/vacation/edit}">Create new Vacation</a>
+
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Employee</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entity : ${entity.vacations}">
+                        <td th:text=${entity.type}></td>
+                        <td th:text=${entity.startDate}></td>
+                        <td th:text=${entity.endDate}></td>
+                        <td th:text=${entity.duration}></td>
+                        <td th:text=${entity.status}></td>
+                        <td th:text=${entity.employee}></td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/vacation/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/vacation/edit/{id}(id=${entity.id})}">Edit</a>
+                            <form th:if="${entity.id!=null}" method="get" th:action="'/vacation/' +${entity.id}+'/delete'">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </section>
 
-
+<section id="quotes" class="color_section bg_image">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div id="carousel-testimonials" class="carousel dxcarousel slide widget_testimonials block">
+                    <a class="carousel-control left" href="#carousel-testimonials" data-slide="prev"></a>
+                    <a class="carousel-control right" href="#carousel-testimonials" data-slide="next"></a>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <p class="carousel-introtext">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, eum adipisci
+                                asperiores animi eos sint modi amet omnis fugiat cum.
+                            </p>
+                            <p class="carousel-readmore">
+                                John Doe
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p class="carousel-introtext">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, eum adipisci
+                                asperiores animi eos sint modi amet omnis fugiat cum.
+                            </p>
+                            <p class="carousel-readmore">
+                                Catrin Jhonson
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p class="carousel-introtext">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, eum adipisci
+                                asperiores animi eos sint modi amet omnis fugiat cum.
+                            </p>
+                            <p class="carousel-readmore">
+                                Nataly Smith
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p class="carousel-introtext">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, eum adipisci
+                                asperiores animi eos sint modi amet omnis fugiat cum.
+                            </p>
+                            <p class="carousel-readmore">
+                                Antony Gore
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer th:replace="~{/commons/footer :: footer}"></footer>
 <section th:replace="~{/commons/copyright :: copyright}"></section>

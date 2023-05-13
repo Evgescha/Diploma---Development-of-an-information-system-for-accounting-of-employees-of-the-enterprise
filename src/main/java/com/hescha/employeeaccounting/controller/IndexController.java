@@ -15,13 +15,4 @@ public class IndexController {
     public String index() {
         return "index";
     }
-    @GetMapping("/team")
-    public String team() {
-        return "team";
-    }
-
-    @GetMapping("/team-single")
-    public String teamSingle() {
-        return "team-single";
-    }
 }

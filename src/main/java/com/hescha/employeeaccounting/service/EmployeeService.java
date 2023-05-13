@@ -100,6 +100,7 @@ public class EmployeeService extends CrudService<Employee> {
         read.setBirthDate(entity.getBirthDate());
         read.setPhoneNumber(entity.getPhoneNumber());
         read.setEmail(entity.getEmail());
+        read.setImage(entity.getImage());
         read.setPosition(entity.getPosition());
         read.setDepartment(entity.getDepartment());
     }

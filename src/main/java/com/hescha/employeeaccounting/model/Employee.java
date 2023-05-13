@@ -22,6 +22,7 @@ public class Employee extends AbstractEntity {
     private LocalDate birthDate = LocalDate.now();
     private String phoneNumber;
     private String email;
+    private String image;
 
     @ManyToOne
     private Position position;
