@@ -34,7 +34,9 @@ public class PositionController {
 
     @GetMapping("/{id}")
     public String read(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("entity", service.read(id));
+        Position position = service.read(id);
+        model.addAttribute("entity", position);
+        model.addAttribute("users", employeeService.findByPosition(position));
         return THYMELEAF_TEMPLATE_ONE_ITEM_PAGE;
     }
 
@@ -46,7 +48,7 @@ public class PositionController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("employee_list", employeeService.readAll());
+        model.addAttribute("employees", employeeService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

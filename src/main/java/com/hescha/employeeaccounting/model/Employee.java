@@ -40,5 +40,5 @@ public class Employee extends AbstractEntity {
     private Set<Training> trainings = new TreeSet<>((o1, o2) -> o1.id.compareTo(o2.getId()));
 
     @ManyToOne
-    private Role userRole;
+    private Role role;
 }

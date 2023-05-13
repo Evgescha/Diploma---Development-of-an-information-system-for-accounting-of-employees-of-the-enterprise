@@ -1001,7 +1001,7 @@ font-size: 15px;
 }
 .sf-menu>li>a {
 border-radius: 3px;
-padding: 12px 22px 12px;
+/*padding: 12px 22px 12px;*/
 margin: 14px 14px 14px;
 color: #fff;
 position: relative;

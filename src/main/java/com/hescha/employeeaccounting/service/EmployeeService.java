@@ -42,7 +42,7 @@ public class EmployeeService extends CrudService<Employee> {
         return repository.findByMiddleNameContains(middleName);
     }
 
-    public Employee findByBirthDate(LocalDate birthDate) {
+    public List<Employee> findByBirthDate(LocalDate birthDate) {
         return repository.findByBirthDate(birthDate);
     }
 
@@ -62,11 +62,15 @@ public class EmployeeService extends CrudService<Employee> {
         return repository.findByEmailContains(email);
     }
 
-    public Employee findByPosition(Position position) {
+    public List<Employee> findByPosition(Position position) {
         return repository.findByPosition(position);
     }
 
-    public Employee findByDepartment(Department department) {
+    public List<Employee> findByRole(Role role) {
+        return repository.findByRole(role);
+    }
+
+    public List<Employee> findByDepartment(Department department) {
         return repository.findByDepartment(department);
     }
 

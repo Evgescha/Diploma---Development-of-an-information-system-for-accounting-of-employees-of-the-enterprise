@@ -1,6 +1,8 @@
 package com.hescha.employeeaccounting.controller;
 
 import com.hescha.employeeaccounting.model.Role;
+import com.hescha.employeeaccounting.service.EmployeeService;
+import com.hescha.employeeaccounting.service.PositionService;
 import com.hescha.employeeaccounting.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ public class RoleController {
     public static final String REDIRECT_TO_ALL_ITEMS = "redirect:" + CURRENT_ADDRESS;
 
     private final RoleService service;
+    private final EmployeeService employeeService;
 
                         
     @GetMapping
@@ -32,7 +35,9 @@ public class RoleController {
 
     @GetMapping("/{id}")
     public String read(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("entity", service.read(id));
+        Role role = service.read(id);
+        model.addAttribute("entity", role);
+        model.addAttribute("users", employeeService.findByRole(role));
         return THYMELEAF_TEMPLATE_ONE_ITEM_PAGE;
     }
 

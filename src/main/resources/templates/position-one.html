@@ -47,6 +47,42 @@
 
 
 
+<section id="middle" class="grey_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Users with this position:</h2>
+            </div>
+        </div>
+
+        <h3 th:if="${users.size==0}">No one user found</h3>
+
+        <div class="team row">
+            <div class="col-sm-6" th:each="entity : ${users}" style="margin-top: 20px">
+                <div class="media light_section">
+                    <a th:href="@{/employee/{id}(id=${entity.id})}" class="pull-left">
+                        <img th:src="${entity.image}" alt="" class="media-object" height="200px">
+                    </a>
+
+                    <div class="media-body">
+                        <h3 th:text="${entity.firstName}+' '+${entity.lastName}"></h3>
+                        <p th:text="'Department: ' + ${entity.department}"></p>
+                        <p th:text="'Position: ' + ${entity.position}"></p>
+                        <p th:text="${entity.email}"></p>
+                        <p class="team-social">
+                            <a class="btn btn-info" th:href="@{/employee/{id}(id=${entity.id})}">See detail</a>
+                            <a class="btn btn-primary" th:href="@{/employee/edit/{id}(id=${entity.id})}">Edit</a>
+                        <form th:if="${entity.id!=null}" method="get" th:action="'/employee/' +${entity.id}+'/delete'">
+                            <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer th:replace="~{/commons/footer :: footer}"></footer>
 <section th:replace="~{/commons/copyright :: copyright}"></section>
 <div th:replace="~{/commons/script :: script}"></div>

@@ -22,7 +22,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     List<Employee> findByMiddleNameContains(String middleName);
 
-    Employee findByBirthDate(LocalDate birthDate);
+    List<Employee> findByBirthDate(LocalDate birthDate);
 
     List<Employee> findByPhoneNumber(String phoneNumber);
 
@@ -32,9 +32,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     List<Employee> findByEmailContains(String email);
 
-    Employee findByPosition(Position position);
+    List<Employee> findByPosition(Position position);
 
-    Employee findByDepartment(Department department);
+    List<Employee> findByRole(Role role);
+
+    List<Employee> findByDepartment(Department department);
 
     Set<Employee> findByVacationsContains(Vacation vacations);
 
