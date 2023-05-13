@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <h3 th:if="${entity.size==0}">No one user found</h3>
+        <h3 th:if="${users.size==0}">No one user found</h3>
 
         <div class="team row">
             <div class="col-sm-6" th:each="entity : ${users}" style="margin-top: 20px">
