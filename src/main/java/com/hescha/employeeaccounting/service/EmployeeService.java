@@ -18,49 +18,6 @@ public class EmployeeService extends CrudService<Employee> {
         this.repository = repository;
     }
 
-    public List<Employee> findByFirstName(String firstName) {
-        return repository.findByFirstName(firstName);
-    }
-
-    public List<Employee> findByFirstNameContains(String firstName) {
-        return repository.findByFirstNameContains(firstName);
-    }
-
-    public List<Employee> findByLastName(String lastName) {
-        return repository.findByLastName(lastName);
-    }
-
-    public List<Employee> findByLastNameContains(String lastName) {
-        return repository.findByLastNameContains(lastName);
-    }
-
-    public List<Employee> findByMiddleName(String middleName) {
-        return repository.findByMiddleName(middleName);
-    }
-
-    public List<Employee> findByMiddleNameContains(String middleName) {
-        return repository.findByMiddleNameContains(middleName);
-    }
-
-    public List<Employee> findByBirthDate(LocalDate birthDate) {
-        return repository.findByBirthDate(birthDate);
-    }
-
-    public List<Employee> findByPhoneNumber(String phoneNumber) {
-        return repository.findByPhoneNumber(phoneNumber);
-    }
-
-    public List<Employee> findByPhoneNumberContains(String phoneNumber) {
-        return repository.findByPhoneNumberContains(phoneNumber);
-    }
-
-    public List<Employee> findByEmail(String email) {
-        return repository.findByEmail(email);
-    }
-
-    public List<Employee> findByEmailContains(String email) {
-        return repository.findByEmailContains(email);
-    }
 
     public List<Employee> findByPosition(Position position) {
         return repository.findByPosition(position);
@@ -68,22 +25,6 @@ public class EmployeeService extends CrudService<Employee> {
 
     public List<Employee> findByRole(Role role) {
         return repository.findByRole(role);
-    }
-
-    public List<Employee> findByDepartment(Department department) {
-        return repository.findByDepartment(department);
-    }
-
-    public Set<Employee> findByVacationsContains(Vacation vacations) {
-        return repository.findByVacationsContains(vacations);
-    }
-
-    public Set<Employee> findBySickLeavesContains(SickLeave sickLeaves) {
-        return repository.findBySickLeavesContains(sickLeaves);
-    }
-
-    public Set<Employee> findByTrainingsContains(Training trainings) {
-        return repository.findByTrainingsContains(trainings);
     }
 
 
