@@ -1,12 +1,15 @@
 package com.hescha.employeeaccounting.controller;
 
 import com.hescha.employeeaccounting.model.Employee;
+import com.hescha.employeeaccounting.model.SickLeave;
 import com.hescha.employeeaccounting.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Set;
 
 
 @Controller
@@ -26,6 +29,8 @@ public class EmployeeController {
     private final PositionService positionService;
     private final DepartmentService departmentService;
     private final RoleService roleService;
+    private final SickLeaveService sickLeaveService;
+    private final VacationService vacationService;
 
     @GetMapping
     public String readAll(Model model) {
@@ -81,6 +86,10 @@ public class EmployeeController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes ra) {
         try {
+            Employee employee = service.read(id);
+            employee.getSickLeaves().forEach(sickLeave -> sickLeaveService.delete(sickLeave.getId()));
+            employee.getVacations().forEach(vacation -> vacationService.delete(vacation.getId()));
+
             service.delete(id);
             ra.addFlashAttribute(MESSAGE, "Removing is successful");
         } catch (Exception e) {
