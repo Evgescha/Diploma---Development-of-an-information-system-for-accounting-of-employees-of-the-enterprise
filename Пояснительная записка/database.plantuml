@@ -1,0 +1,74 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class DEPARTMENT {
+   DESCRIPTION: character varying(3000)
+   NAME: character varying(255)
+   MANAGER_ID: bigint
+   ID: bigint
+}
+class EMPLOYEE {
+   BIRTH_DATE: date
+   EMAIL: character varying(255)
+   FIRST_NAME: character varying(255)
+   LAST_NAME: character varying(255)
+   MIDDLE_NAME: character varying(255)
+   PHONE_NUMBER: character varying(255)
+   DEPARTMENT_ID: bigint
+   POSITION_ID: bigint
+   ID: bigint
+}
+class MY_USER {
+   PASSWORD: character varying(255)
+   USERNAME: character varying(255)
+   EMPLOYEE_ID: bigint
+   USER_ROLE_ID: bigint
+   ID: bigint
+}
+class POSITION {
+   DESCRIPTION: character varying(3000)
+   TITLE: character varying(255)
+   ID: bigint
+}
+class ROLE {
+   NAME: character varying(255)
+   ID: bigint
+}
+class SICK_LEAVE {
+   DURATION: integer
+   END_DATE: date
+   START_DATE: date
+   EMPLOYEE_ID: bigint
+   ID: bigint
+}
+class TRAINING {
+   DESCRIPTION: character varying(255)
+   END_DATE: date
+   RESULT: character varying(3000)
+   START_DATE: date
+   TITLE: character varying(255)
+   EMPLOYEE_ID: bigint
+   ID: bigint
+}
+class VACATION {
+   DURATION: integer
+   END_DATE: timestamp
+   START_DATE: timestamp
+   STATUS: integer
+   TYPE: character varying(255)
+   EMPLOYEE_ID: bigint
+   ID: bigint
+}
+
+DEPARTMENT  -[#595959,plain]-^  EMPLOYEE   : "MANAGER_ID:ID"
+EMPLOYEE    -[#595959,plain]-^  DEPARTMENT : "DEPARTMENT_ID:ID"
+EMPLOYEE    -[#595959,plain]-^  POSITION   : "POSITION_ID:ID"
+MY_USER     -[#595959,plain]-^  EMPLOYEE   : "EMPLOYEE_ID:ID"
+MY_USER     -[#595959,plain]-^  ROLE       : "USER_ROLE_ID:ID"
+SICK_LEAVE  -[#595959,plain]-^  EMPLOYEE   : "EMPLOYEE_ID:ID"
+TRAINING    -[#595959,plain]-^  EMPLOYEE   : "EMPLOYEE_ID:ID"
+VACATION    -[#595959,plain]-^  EMPLOYEE   : "EMPLOYEE_ID:ID"
+@enduml
